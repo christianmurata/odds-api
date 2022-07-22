@@ -1,0 +1,5 @@
+.env
+graphql.schema.json
+/graphql
+/node_modules
+/dist
