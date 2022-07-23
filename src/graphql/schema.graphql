@@ -1,0 +1,54 @@
+scalar Date
+
+type Category {
+  key: String
+  name: String
+}
+
+type Sport {
+    key: ID!,
+    name: String!,
+    eventCount: Int,
+    competitionCount: Int,
+}
+
+type Team {
+    key: String!,
+    name: String!,
+    abbreviation: String!,
+    nationality: String!,
+}
+
+type Event {
+    id: ID!,
+    cutoffTime: String,
+    key: String,
+    name: String,
+    status: String,
+    home: Team,
+    away: Team,
+}
+
+type Competition {
+    key: String!,
+    name: String!,
+    category: Category!,
+    events: [Event],
+}
+
+type Odds {
+    maxStake: Float,
+    minStake: Float,
+    outcome: String,
+    params: String,
+    price: Float,
+    probability: Float,
+    side: String,
+    status: String,
+}
+
+type Query {
+    sports: [Sport]
+    oddsByEventIdAndMarketUrl(event: Int!, marketUrl: String): Odds
+    fixturesByDateAndSport(date: Date!, sport: String): [Competition]
+}
