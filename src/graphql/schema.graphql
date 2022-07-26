@@ -29,7 +29,7 @@ type Event {
     away: Team,
 }
 
-type Competition {
+type Fixture {
     key: String!,
     name: String!,
     category: Category!,
@@ -49,6 +49,6 @@ type Odds {
 
 type Query {
     sports: [Sport]
-    oddsByEventIdAndMarketUrl(event: Int!, marketUrl: String): Odds
-    fixturesByDateAndSport(date: Date!, sport: String): [Competition]
+    fixturesByDateAndSport(date: Date!, sport: String!): [Fixture]
+    oddsByEventIdAndMarketUrl(eventId: Int!, marketUrl: String!): Odds
 }
